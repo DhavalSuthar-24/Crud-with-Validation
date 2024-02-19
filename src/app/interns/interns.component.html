@@ -1,0 +1,89 @@
+
+<header>
+    <nav class="nav">
+      <div class="c1">
+        <h1>Intern List</h1>
+        <button type="button" class="btn btn-light" (click)="openModal()" >
+          Add Intern
+        </button>
+      </div>
+    </nav>
+</header>
+<div *ngIf="showForm" class="modal-overlay">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h1>Add Intern Details</h1>
+            <button type="button" class="btn-close" (click)="closeModal()" aria-label="Close">&times;</button>
+        </div>
+        <form [formGroup]="internForm" (ngSubmit)="addIntern()">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" formControlName="name" />
+                <div *ngIf="internForm.get('name')?.invalid && (internForm.get('name')?.dirty || internForm.get('name')?.touched)">
+                    <div *ngIf="internForm.get('name')?.errors?.['required']">Name is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" formControlName="email" />
+            </div>
+            <div *ngIf="internForm.get('email')?.invalid && (internForm.get('email')?.dirty || internForm.get('email')?.touched)">
+                <div *ngIf="internForm.get('email')?.errors?.['required']">Email is required</div>
+            </div>
+            <div class="form-group">
+                <label for="department">Department</label>
+                <input type="text" id="department" name="department" formControlName="department" />
+            </div>
+            <div *ngIf="internForm.get('department')?.invalid && (internForm.get('department')?.dirty || internForm.get('department')?.touched)">
+                <div *ngIf="internForm.get('department')?.errors?.['required']">Department is required</div>
+            </div>
+            <div class="form-group">
+                <label for="joiningDate">Joining Date</label>
+                <input type="date" id="joiningDate" name="joiningDate" formControlName="joiningDate"
+                       [disabled]="internForm.get('joiningDate')?.hasError('futureDate') ?? false"   [max]="todayDate"/>
+                <div *ngIf="internForm.get('joiningDate')?.hasError('futureDate')" class="invalid-feedback">
+                  Future dates are not allowed.
+                </div>
+              </div>
+              
+              
+              
+              
+            <button *ngIf="!isUpdateMode" class="edit-button" (click)="addIntern()">Add</button>
+            <button *ngIf="isUpdateMode" class="edit-button" (click)="addIntern()">Update</button>
+        </form>
+    </div>
+</div>
+
+
+<div class="no-data" *ngIf="internArr.length === 0">
+    No data available.
+</div>
+
+<div class="t2" *ngIf="internArr.length > 0">
+    <table class="tbs">
+        <thead>
+            <tr>
+                <th>Emp Id</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Department</th>
+                <th>Joining Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of internArr">
+                <td>{{ item.empId }}</td>
+                <td>{{ item.name }}</td>
+                <td>{{ item.email }}</td>
+                <td>{{ item.department }}</td>
+                <td>{{ item.joiningDate }}</td>
+                <td>
+                    <button class="edit-button" (click)="onedit(item)">Edit</button>
+                    <button class="delete-button" (click)="deleteIntern(item.empId)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
