@@ -74,17 +74,16 @@
   .tbs th,
   .tbs td {
     padding: 10px;
-    border: 1px solid #222; /* Dark border color */
-    background-color: #f6f6f6; /* Dark background color */
-    color: #000000; /* White text color */
+    border: 1px solid #222; 
+    background-color: #f6f6f6; 
+    color: #000000; 
   }
   
   .tbs th {
-    background-color: #dcdee0; /* Dark blue header background color */
-  }
+    background-color: #dcdee0; 
   
   .tbs tr:nth-child(even) {
-    background-color: #ffffff; /* Dark background color for even rows */
+    background-color: #ffffff; 
   }
   
   .edit-button,
@@ -106,34 +105,31 @@
     color: white;
   }
   
-  /* Center the buttons horizontally */
+
   td {
     text-align: center;
   }
   
-  /* Adjust spacing between buttons */
+
   .edit-button + .delete-button {
     margin-left: 5px;
   }
   
 
-  
-/* interns.component.css */
 
-/* Style for the no-data message */
 .no-data {
-  position: fixed; /* Position the element relative to the browser window */
-  top: 50%; /* Position the element 50% from the top of the viewport */
-  left: 50%; /* Position the element 50% from the left of the viewport */
-  transform: translate(-50%, -50%); /* Center the element horizontally and vertically */
-  font-size: 36px; /* Set font size to be big */
-  color: #000000; /* Set text color to white */
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add shadow to text */
+  position: fixed; 
+  top: 50%;
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+  font-size: 36px; 
+  color: #000000; 
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
 }
 
 /* Hover effect */
 .no-data:hover {
-  text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.8); /* Increase shadow on hover */
+  text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.8); 
 }
 
 
